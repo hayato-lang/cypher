@@ -8,21 +8,21 @@ export const HomeShow = [
   {
     path: "/",
     exact: true,
-    Children: <Home/>
+    children: <Home/>
   },
   {
     path: "/show_event",
     exact: false,
-    Children: <ShowEvent/>
+    children: <ShowEvent/>
   },
   {
     path: "/show_user",
     exact: true,
-    Children: <ShowUser/>
+    children: <ShowUser/>
   },
   {
     path: "*",
     exact: true,
-    Children: <Page404/>
+    children: <Page404/>
   },
 ]
