@@ -46,7 +46,13 @@ export const Header: VFC = memo(() => {
       </Flex>
       <MenuIconButton onOpen={onOpen}/>
     </Flex>
-    <MenuDrawer isOpen={isOpen} onClose={onClose} />
+    <MenuDrawer 
+      isOpen={isOpen} 
+      onClose={onClose}
+      onClickHome={onClickHome}
+      onClickShowEvent={onClickShowEvent}
+      onClickShowUser={onClickShowUser}
+    />
   </>
   );
 });
