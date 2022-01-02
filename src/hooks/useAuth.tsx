@@ -3,12 +3,13 @@ import { useCallback, useState } from "react"
 import { useHistory } from "react-router-dom";
 import { User } from "../types/api/user";
 
-export const useAuth = (id: string) => {
+export const useAuth = () => {
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
 
-  const login = useCallback((id) => {
+  const login = useCallback((id: string) => {
+    setLoading(true);
     axios.get<Array<User>>(`https://jsonplaceholder.typicode.com/users/${id}`)
     .then((res) => {
       if (res.data) {
@@ -18,6 +19,7 @@ export const useAuth = (id: string) => {
       }
     })
     .catch(() => alert("ログインできません"))
-  }, [history]);
-  return { login }
+    .finally(() => setLoading(false));
+  }, [history])
+  return { login, loading };
 }
