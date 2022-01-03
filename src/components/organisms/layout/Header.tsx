@@ -27,7 +27,7 @@ export const Header: VFC = memo(() => {
           as="p" 
           fontSize='2xl'
           fontFamily="Kaushan Script"
-          color="blue.300"
+          color="blue.400"
           onClick={onClickHome}
           >
           Cypher
@@ -40,9 +40,9 @@ export const Header: VFC = memo(() => {
         display={{ base: "none", md: "flex" }}
       >
         <Box pr={4}>
-          <Link fontFamily="Kaushan Script" color="yellow.200" onClick={onClickShowUser}>Users</Link>
+          <Link fontFamily="Kaushan Script" color="orange.400" onClick={onClickShowUser}>Users</Link>
         </Box>
-        <Link fontFamily="Kaushan Script" color="yellow.200" onClick={onClickShowEvent}>Events</Link>
+        <Link fontFamily="Kaushan Script" color="orange.400" onClick={onClickShowEvent}>Events</Link>
       </Flex>
       <MenuIconButton onOpen={onOpen}/>
     </Flex>
