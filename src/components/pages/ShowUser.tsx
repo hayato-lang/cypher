@@ -3,7 +3,7 @@
 import { Wrap, WrapItem, Center, Spinner } from "@chakra-ui/react";
 import { memo, useEffect, VFC } from "react";
 import { useAllUsers } from "../../hooks/useAllUsers";
-import { UserCard } from "../../types/api/UserCard";
+import { UserCard } from "../../types/UserCard";
 
 export const ShowUser: VFC = memo(() => {
   const { getUsers, loading, users } = useAllUsers();
