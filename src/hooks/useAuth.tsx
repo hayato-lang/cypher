@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useState } from "react"
 import { useHistory } from "react-router-dom";
 import { User } from "../types/api/user";
-import { useMessage } from "./useMessages";
+import { useMessage } from "./useMessage";
 
 export const useAuth = () => {
   const history = useHistory();
@@ -18,7 +18,7 @@ export const useAuth = () => {
         ShowMessage({ title: "ログインしました", status: "success" });
         history.push("/home");
       } else {
-        ShowMessage({  title: "ユーザーが見つかりません", status: "error" });
+        ShowMessage({ title: "ユーザーが見つかりません", status: "error" });
       }
     })
     .catch(() => ShowMessage({  title: "ログインできません", status: "error" }))
