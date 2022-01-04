@@ -5,9 +5,9 @@ import { User } from "../types/api/user";
 import { useMessage } from "./useMessage";
 
 export const useAllUsers = () => {
-  const { showMessage } = useMessage();
+  const { ShowMessage } = useMessage();
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState<Array<User>>();
+  const [users, setUsers] = useState<Array<User>>([]);
 
   const getUsers = useCallback(() => {
     setLoading(true)
@@ -16,7 +16,7 @@ export const useAllUsers = () => {
       .then((res) => 
         setUsers(res.data))
       .catch(() => {
-        showMessage({ title: "ユーザーの取得に失敗しました", status: "error" })
+        ShowMessage({ title: "ユーザーの取得に失敗しました", status: "error" })
       })
       .finally(() => 
       setLoading(false)

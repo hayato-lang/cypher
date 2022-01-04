@@ -9,26 +9,26 @@ export const ShowUser: VFC = memo(() => {
   const { getUsers, loading, users } = useAllUsers();
 
   useEffect(() => getUsers(), []);
+
   return (
     <>
-      {loading ? (
-        <Center h="100vh">
-          <Spinner />
-        <Center/>
-      ) : (
-        <Wrap p={{ base: 4, md: 10 }}>
-          <WrapItem>
-            <UserCard 
-              imageUrl="https://source.unsplash.com/random"
-              storeTitle="Club Kobe"
-              access="兵庫県神戸市北区2-11"
-            />
-          </WrapItem>
+    {loading ? (
+      <Center>
+        <Spinner/>
+      </Center>
+    ) : (
+        <Wrap p={{ base: 4, md: 10 }} mx="auto">
+            {users.map((user) => (
+              <WrapItem key={user.id}>
+                 <UserCard 
+                   imageUrl="https://source.unsplash.com/random"
+                   username={user.username}
+                   name={user.name}
+                 />
+              </WrapItem>
+            ))}
         </Wrap>
-      )}
+    )}
     </>
-  )
+  );
 });
-
-
-

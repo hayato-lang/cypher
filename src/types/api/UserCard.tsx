@@ -2,13 +2,13 @@ import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 
 type Props = {
-  storeTitle: string;
+  username: string;
   imageUrl: string;
-  access: string;
+  name: string;
 }
 
 export const UserCard: VFC<Props> = memo((props) => {
-  const { imageUrl, access, storeTitle } = props;
+  const { imageUrl, username, name } = props;
   return (
         <Box
           w="260px"
@@ -23,7 +23,7 @@ export const UserCard: VFC<Props> = memo((props) => {
               src={imageUrl}
               borderRadius="full"
               boxSize="160px"
-              alt={storeTitle}
+              alt={username}
               m="auto"
             />
             <Text
@@ -32,10 +32,10 @@ export const UserCard: VFC<Props> = memo((props) => {
               fontFamily="Kaushan Script" 
               color="blue.400"
             >
-              {storeTitle}
+              {username}
             </Text>
             <Text fontSize="sm" fontWeight="gray.100">
-              {access}
+              {name}
             </Text>
           </Stack>
         </Box>
