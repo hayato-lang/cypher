@@ -3,7 +3,7 @@
 import { Center, Spinner, Wrap, WrapItem } from "@chakra-ui/react";
 import { memo, useEffect, VFC } from "react";
 import { useAllEvents } from "../../hooks/useAllEvents";
-import { EventCard } from "../../types/EventCard";
+import { EventCard } from "../organisms/event/EventCard";
 
 export const ShowEvent: VFC = memo(() => {
   const { getEvents, loading, events } = useAllEvents();
