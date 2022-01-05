@@ -22,7 +22,7 @@ export const ShowUser: VFC = memo(() => {
 
   const onClickOpen = useCallback((id: number) => {
     onSelectUser({ id, users, onOpen })
-  }, []);
+  }, [users, onSelectUser, onOpen]);
   return (
     <>
     {loading ? (
@@ -44,7 +44,7 @@ export const ShowUser: VFC = memo(() => {
             ))}
         </Wrap>
     )}
-    <UserDetailModal isOpen={isOpen} onClose={onClose} />
+    <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
