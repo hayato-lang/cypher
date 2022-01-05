@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { Center, Spinner, Wrap, WrapItem } from "@chakra-ui/react";
+import { Center, Spinner, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { memo, useEffect, VFC } from "react";
 import { useAllEvents } from "../../hooks/useAllEvents";
 import { EventCard } from "../organisms/event/EventCard";
+import { EventDetailModal } from "../organisms/event/EventDetailModal";
 
 export const ShowEvent: VFC = memo(() => {
   const { getEvents, loading, events } = useAllEvents();
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => getEvents(), []);
   return (
@@ -23,11 +26,13 @@ export const ShowEvent: VFC = memo(() => {
                 imageUrl="https://source.unsplash.com/random"
                 userId={event.userId}
                 title={event.title}
+                onOpen={onOpen}
                   />
             </WrapItem>
           ))}
         </Wrap>
       )}
+      <EventDetailModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 });

@@ -5,10 +5,11 @@ type Props = {
   userId: string;
   title: string;
   imageUrl: string;
+  onOpen: () => void;
 }
 
 export const EventCard: VFC<Props> = memo((props) => {
-  const { userId, title, imageUrl } = props;
+  const { userId, title, imageUrl, onOpen } = props;
   return (
     <Box
       w="260px"
@@ -17,6 +18,7 @@ export const EventCard: VFC<Props> = memo((props) => {
       borderRadius= "10px"
       shadow="md"
       p={4}
+      onClick={onOpen}
     >
       <Stack textAlign="center">
         <Image 
