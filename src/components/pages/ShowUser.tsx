@@ -34,7 +34,7 @@ export const ShowUser: VFC = memo(() => {
             {users.map((user) => (
               <WrapItem key={user.id}>
                  <UserCard 
-                 id={user.id}
+                   id={user.id}
                    imageUrl="https://source.unsplash.com/random"
                    username={user.username}
                    name={user.name}

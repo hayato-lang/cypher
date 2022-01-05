@@ -2,14 +2,16 @@ import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 
 type Props = {
+  id: number;
   userId: string;
   title: string;
   imageUrl: string;
-  onOpen: () => void;
+  onClick: (id: number) => void;
+
 }
 
 export const EventCard: VFC<Props> = memo((props) => {
-  const { userId, title, imageUrl, onOpen } = props;
+  const { id,userId, title, imageUrl, onClick } = props;
   return (
     <Box
       w="260px"
@@ -18,7 +20,7 @@ export const EventCard: VFC<Props> = memo((props) => {
       borderRadius= "10px"
       shadow="md"
       p={4}
-      onClick={onOpen}
+      onClick={() => onClick(id)}
     >
       <Stack textAlign="center">
         <Image 

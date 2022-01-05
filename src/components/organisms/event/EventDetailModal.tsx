@@ -1,13 +1,15 @@
 import { FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Stack } from "@chakra-ui/react";
 import { memo, VFC } from "react";
+import { Event } from "../../../types/api/event";
 
 type Props = {
+  event: Event | null;
   isOpen: boolean;
   onClose: () => void;
 }
 
 export const EventDetailModal: VFC<Props> = memo((props) => {
-  const { isOpen, onClose } = props;
+  const {  event ,isOpen, onClose } = props;
   return(
     <Modal isOpen={isOpen} onClose={onClose}>
     <ModalOverlay>
@@ -18,11 +20,11 @@ export const EventDetailModal: VFC<Props> = memo((props) => {
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>タイトル</FormLabel>
-              <Input value="アドレナリン2022" isReadOnly />
+              <Input value={event?.title} isReadOnly />
             </FormControl>
             <FormControl>
               <FormLabel>内容</FormLabel>
-              <Input value="バチバチの熱い戦いが今ここに!!" isReadOnly />
+              <Input value={event?.body} isReadOnly />
             </FormControl>
           </Stack>
         </ModalBody>
