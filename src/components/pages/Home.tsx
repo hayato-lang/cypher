@@ -1,46 +1,53 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import Slider, { Settings } from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
 
+import { useAllEvents } from "../../hooks/useAllEvents";
+import { Center, Spinner } from "@chakra-ui/react";
+import { HomeEventCard } from "../organisms/event/HomeEventCard";
+
 const setting: Settings = {
-  dots: true,
   infinite: true,
   centerMode: true,
   slidesToShow: 1,
   autoplay: true,
-  speed: 500,
+  speed: 700,
+  pauseOnHover: true
 };
 
 
 export const Home: React.VFC = memo(() => {
+  const { getEvents, events, loading } = useAllEvents();
 
+  useEffect(() => getEvents(), [])
   return (
-    <div>
-      <h2>Pick Up</h2>
-      <Slider {...setting}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
-      </Slider>
-    </div>
+    <>
+    {loading ? (
+      <Center>
+        <Spinner/>
+      </Center>
+    ) : (
+      <div>
+        <Slider 
+        {...setting}
+        >
+          {events.map((event) => (
+            <Center>
+              <HomeEventCard
+                  key={event.userId} 
+                  imageUrl="https://source.unsplash.com/random"
+                  userId={event.userId}
+                  title={event.title}
+                />
+            </Center>
+          ))}
+        </Slider>
+      </div>
+    )}
+    </>
   );
 });
