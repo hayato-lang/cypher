@@ -15,10 +15,10 @@ export const useAuth = () => {
   const login = useCallback((id: string) => {
     setLoading(true);
     axios
-    .get<Array<User>>(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
     .then((res) => {
       if (res.data) {
-        setLoginUser(res.data)
+        setLoginUser(res.data);
         ShowMessage({ title: "ログインしました", status: "success" });
         history.push("/home");
       } else {
@@ -28,8 +28,8 @@ export const useAuth = () => {
     })
     .catch(() => 
     {ShowMessage({  title: "ログインできません", status: "error" })
-    setLoading(false)
-  })
+    setLoading(false);
+  });
   }, [history, ShowMessage, setLoginUser])
   return { login, loading  };
 }
