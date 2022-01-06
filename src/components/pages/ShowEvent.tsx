@@ -25,7 +25,7 @@ export const ShowEvent: VFC = memo(() => {
           <Spinner/>
         </Center>
       ) : (
-        <Wrap p={{base: 3, md: 10}} mx="auto">
+        <Wrap p={{base: 4, md: 10}} mx="auto">
           {events.map((event) => (
             <WrapItem key={event.id}>
               <EventCard

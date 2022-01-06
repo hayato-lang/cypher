@@ -26,7 +26,7 @@ export const ShowUser: VFC = memo(() => {
   return (
     <>
     {loading ? (
-      <Center>
+      <Center h="100vh">
         <Spinner/>
       </Center>
     ) : (

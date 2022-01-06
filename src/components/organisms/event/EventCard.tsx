@@ -29,6 +29,7 @@ export const EventCard: VFC<Props> = memo((props) => {
           boxSize="160px"
           alt={userId}
           m="auto"
+          _hover={{cursor: "pointer", opacity: 0.8}}
         />
         <Text
           fontSize="lg" 
